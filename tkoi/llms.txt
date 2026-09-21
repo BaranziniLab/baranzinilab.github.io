@@ -31,6 +31,7 @@ for detailed documentation of this R package.
 To install the development version from GitHub:
 
 ``` r
+
 # Install devtools if necessary
 install.packages("devtools")
 
@@ -62,6 +63,7 @@ simulated gene expression results. We’ll read it using `data.table` for
 performance.
 
 ``` r
+
 library(tkoi)
 library(data.table)
 
@@ -86,6 +88,7 @@ graph using a personalized PageRank algorithm. It also performs
 permutations to assess statistical enrichment.
 
 ``` r
+
 tkoi_result = run_tkoi(
   expression_data = expression_data,
   subnetwork = tkoi::tkoi_net,    # Predefined igraph network included with the package
@@ -109,6 +112,7 @@ You can extend the analysis by integrating GO term enrichment using
 ontology-based and graph-based enrichment.
 
 ``` r
+
 tkoi_result = run_gene_enrichment(tkoi_result)
 ```
 
@@ -122,12 +126,14 @@ Two visualizations are automatically generated:
 #### Scatter Plot (All Terms)
 
 ``` r
+
 tkoi_result@gene_enrichment_comparison$comparison_scatter1
 ```
 
 #### Scatter Plot (Faceted by GO Namespace)
 
 ``` r
+
 tkoi_result@gene_enrichment_comparison$comparison_scatter2
 ```
 
@@ -142,6 +148,7 @@ function highlights upregulated and downregulated genes in a scatter
 plot based on both experimental and network evidence.
 
 ``` r
+
 plt1 = make_gene_exploration_plot(
   tkoi_list = tkoi_result,
   sig_color = "#F39B7FB2",
@@ -156,6 +163,7 @@ This returns a data frame containing logFC, p-values, PageRank scores,
 and FDRs for each gene.
 
 ``` r
+
 gene_data = export_gene_exploration_data(tkoi_result)
 head(gene_data)
 ```
@@ -167,6 +175,7 @@ most significantly enriched genes, pathways, or biological concepts
 based on network-level statistics.
 
 ``` r
+
 plt2 = visualize_topn(
   tkoi_list = tkoi_result,
   category = "Gene",       # Can also be "Pathway", "BiologicalProcess", etc.
@@ -182,6 +191,7 @@ plt2
 Save your full analysis object for future use:
 
 ``` r
+
 save(tkoi_result, file = "tkoi_result.rda")
 ```
 
@@ -209,6 +219,7 @@ knowledge graph:
 Inspect them like so:
 
 ``` r
+
 data(go_annotation)
 head(go_annotation)
 ```
